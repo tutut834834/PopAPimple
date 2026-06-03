@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#17141f" />
+  <title>Pimple Pop Focus — GitHub Pages Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="app" class="app-shell">
+    <section class="topbar glass-panel">
+      <div class="brand-block">
+        <div class="brand-icon">✌️</div>
+        <div>
+          <h1>Pimple Pop Focus</h1>
+          <p>Pinch zoom, center focus, two-finger squeeze.</p>
+        </div>
+      </div>
+      <div class="stat-row" aria-label="Game statistics">
+        <div class="stat-card">
+          <span class="stat-label">Score</span>
+          <strong id="scoreText">0</strong>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Combo</span>
+          <strong id="comboText">x1.0</strong>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Done</span>
+          <strong id="doneText">0/9</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="game-wrap glass-panel">
+      <canvas id="gameCanvas" aria-label="Pimple popping game canvas"></canvas>
+
+      <div id="feedbackToast" class="feedback-toast hidden">Tap a pimple to focus.</div>
+
+      <div id="damageFlash" class="damage-flash" aria-hidden="true"></div>
+
+      <div class="left-help help-card">
+        <h2>Controls</h2>
+        <p><strong>Mobile:</strong> pinch with two fingers to zoom and pan.</p>
+        <p><strong>Focus:</strong> tap a pimple. It centers and zooms in.</p>
+        <p><strong>Pop:</strong> place two fingers around it and hold about 3 seconds.</p>
+        <p><strong>Desktop:</strong> wheel zoom, drag pan, click pimple, hold space/click.</p>
+      </div>
+
+      <div class="right-help help-card">
+        <h2 id="modeTitle">Find a pimple</h2>
+        <p id="modeBody">Tap one of the 9 pimples. Zoom is now real camera zoom, not fake CSS.</p>
+        <div class="meter-block">
+          <div class="meter-head">
+            <span>Pop progress</span>
+            <span id="progressLabel">0%</span>
+          </div>
+          <div class="meter"><div id="progressFill" class="meter-fill"></div></div>
+        </div>
+        <div class="meter-block">
+          <div class="meter-head">
+            <span>Finger position</span>
+            <span id="positionLabel">--</span>
+          </div>
+          <div class="meter small"><div id="positionFill" class="meter-fill secondary"></div></div>
+        </div>
+        <div class="meter-block">
+          <div class="meter-head">
+            <span>Pressure</span>
+            <span id="pressureLabel">--</span>
+          </div>
+          <div class="meter small"><div id="pressureFill" class="meter-fill tertiary"></div></div>
+        </div>
+      </div>
+
+      <div class="bottom-actions">
+        <button id="focusButton" type="button">Center selected pimple</button>
+        <button id="zoomInButton" type="button">Zoom +</button>
+        <button id="zoomOutButton" type="button">Zoom −</button>
+        <button id="resetViewButton" type="button">Full face</button>
+        <button id="restartButton" type="button">Restart</button>
+      </div>
+    </section>
+
+    <section class="notes glass-panel">
+      <h2>What this version fixes</h2>
+      <div class="note-grid">
+        <article>
+          <h3>Real pinch zoom</h3>
+          <p>The canvas camera transforms world coordinates, so pimples stay under your fingers correctly.</p>
+        </article>
+        <article>
+          <h3>Centered focus</h3>
+          <p>Tap a pimple and the camera animates until the pimple is large and centered.</p>
+        </article>
+        <article>
+          <h3>Detailed pimple art</h3>
+          <p>Irregular swelling, pores, shine, redness, blocked center, pus build-up, and wound states.</p>
+        </article>
+        <article>
+          <h3>3-second pop</h3>
+          <p>Hold for the sweet spot. Too early leaves pus. Too late hurts the wound and flashes red.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>

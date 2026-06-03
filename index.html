@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Pimple Pop Zoom</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="redFlash"></div>
+  <main class="app">
+    <section class="topbar">
+      <div>
+        <h1>Pimple Pop Zoom</h1>
+        <p class="subtitle">Tap a pimple to zoom in. Then squeeze it with two fingers for about 3 seconds.</p>
+      </div>
+      <div class="stats">
+        <div><span id="score">0</span><small>Score</small></div>
+        <div><span id="leftCount">9</span><small>Left</small></div>
+        <div><span id="combo">x1</span><small>Combo</small></div>
+      </div>
+    </section>
+
+    <section class="game-wrap">
+      <div id="gameArea" class="game-area" aria-label="Pimple popping game area">
+        <div id="modeHint" class="mode-hint">Tap one pimple to zoom in</div>
+        <button id="backBtn" class="back-btn" type="button">← Back to face</button>
+
+        <svg id="faceSvg" viewBox="0 0 560 720" class="face" role="img" aria-label="cartoon male face">
+          <defs>
+            <radialGradient id="skin" cx="50%" cy="38%" r="72%">
+              <stop offset="0%" stop-color="#ffd6b6" />
+              <stop offset="100%" stop-color="#d48a67" />
+            </radialGradient>
+            <radialGradient id="pimpleGrad" cx="35%" cy="30%" r="70%">
+              <stop offset="0%" stop-color="#fff7b1" />
+              <stop offset="44%" stop-color="#ff7080" />
+              <stop offset="100%" stop-color="#a71528" />
+            </radialGradient>
+            <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000" flood-opacity="0.25" />
+            </filter>
+          </defs>
+
+          <g id="faceWorld">
+            <ellipse cx="280" cy="370" rx="190" ry="255" fill="url(#skin)" filter="url(#softShadow)" />
+            <path d="M108 238 C126 92 225 43 280 58 C335 43 434 92 452 238 C393 187 330 172 280 185 C230 172 167 187 108 238Z" fill="#21170f" />
+            <path d="M113 236 C121 171 151 112 206 83" stroke="#38261b" stroke-width="23" stroke-linecap="round" fill="none" />
+            <path d="M447 236 C439 171 409 112 354 83" stroke="#38261b" stroke-width="23" stroke-linecap="round" fill="none" />
+            <ellipse cx="185" cy="310" rx="24" ry="14" fill="#fff" />
+            <ellipse cx="375" cy="310" rx="24" ry="14" fill="#fff" />
+            <circle cx="188" cy="310" r="7" fill="#23140e" />
+            <circle cx="372" cy="310" r="7" fill="#23140e" />
+            <path d="M150 270 Q185 255 220 270" stroke="#312119" stroke-width="9" stroke-linecap="round" fill="none" />
+            <path d="M340 270 Q375 255 410 270" stroke="#312119" stroke-width="9" stroke-linecap="round" fill="none" />
+            <path d="M280 335 Q260 400 288 408" stroke="#9f604a" stroke-width="8" stroke-linecap="round" fill="none" />
+            <path id="mouth" d="M220 500 Q280 545 340 500" stroke="#7c2d2d" stroke-width="11" stroke-linecap="round" fill="none" />
+            <path d="M210 455 Q280 470 350 455" stroke="#8e5745" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.38" />
+            <g id="pimpleLayer"></g>
+          </g>
+        </svg>
+
+        <div id="targetRing" class="target-ring"></div>
+        <div id="fingerA" class="finger"></div>
+        <div id="fingerB" class="finger"></div>
+        <div id="pusStream" class="pus-stream"></div>
+        <div id="popBurst" class="pop-burst"></div>
+        <div id="floatingText" class="floating-text"></div>
+      </div>
+
+      <aside class="panel">
+        <h2>Zoom squeeze</h2>
+        <div class="timer-big"><span id="timerText">0.0</span><small>/ 3.0 sec</small></div>
+        <div class="meter-row"><label>Timing</label><div class="meter"><div id="timeBar"></div></div></div>
+        <div class="meter-row"><label>Finger position</label><div class="meter"><div id="posBar"></div></div></div>
+        <div class="meter-row"><label>Pressure</label><div class="meter"><div id="pressureBar"></div></div></div>
+        <div class="result-box" id="feedback">Tap a pimple first. The camera zooms in so the pimple becomes big enough to approach with two fingers.</div>
+        <button id="restartBtn" type="button">Restart game</button>
+      </aside>
+    </section>
+
+    <section class="instructions">
+      <strong>How to play:</strong> Step 1: tap one pimple on the face. Step 2: after zoom, put two fingers left and right of the big pimple. Step 3: squeeze for around 3 seconds. Release too early = pus remains. Too long = red wound and unhappy face. Desktop: click/hold the enlarged pimple.
+    </section>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>

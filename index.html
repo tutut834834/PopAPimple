@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Real Two-Finger Pimple Pop</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <header id="topbar">
+      <div>
+        <h1>Real Two-Finger Pimple Pop</h1>
+        <p id="hint">Tap a pimple, zoom in, then squeeze inward with two fingers.</p>
+      </div>
+      <div id="stats">
+        <span>Score <b id="score">0</b></span>
+        <span>Popped <b id="popped">0</b>/9</span>
+        <span>Combo <b id="combo">x1</b></span>
+      </div>
+    </header>
+
+    <main id="stageWrap">
+      <canvas id="game" width="1200" height="1700"></canvas>
+
+      <div id="touchHud">
+        <div class="meterBox">
+          <label>Pressure</label>
+          <div class="meter"><div id="pressureBar"></div></div>
+        </div>
+        <div class="meterBox">
+          <label>Pus left</label>
+          <div class="meter"><div id="pusBar"></div></div>
+        </div>
+        <div class="meterBox">
+          <label>Finger position</label>
+          <div class="meter"><div id="positionBar"></div></div>
+        </div>
+      </div>
+
+      <div id="message">Tap one pimple.</div>
+    </main>
+
+    <footer>
+      <button id="resetBtn">Restart</button>
+      <button id="zoomOutBtn">Zoom out</button>
+      <span>Mobile: pinch to zoom/pan. Pop mode: two fingers must move inward.</span>
+    </footer>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
